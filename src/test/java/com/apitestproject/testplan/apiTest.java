@@ -20,11 +20,24 @@ public class apiTest {
 				.header("Content-Type", "application/json")
 				.request()
 				.get("https://swapi.co/api/people");
-		assertEquals(response.getStatusCode(), 200);
+		assertEquals(response.getStatusCode(), 201);
 		assertEquals(response.path("results[0].name"), "Luke Skywalker");
 		System.out.println(response.getStatusCode());
 		System.out.println(response.asString());
 		System.out.println(response.path("results[0].name"));
 	}
 
+	@Test(description="Test free API online")
+	public void test02() {
+		response = RestAssured
+				.given()
+				.header("Content-Type", "application/json")
+				.request()
+				.get("https://swapi.co/api/people");
+		assertEquals(response.getStatusCode(), 200);
+		assertEquals(response.path("results[0].name"), "Luke Skywalker");
+		System.out.println(response.getStatusCode());
+		System.out.println(response.asString());
+		System.out.println(response.path("results[0].name"));
+	}
 }
